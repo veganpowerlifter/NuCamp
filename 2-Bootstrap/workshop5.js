@@ -13,7 +13,8 @@ class Bootcamp {
         this.level = level;
         this.students = [];
 
-    }//task 3 before putting a new student into the array check if the email or name is blank
+    }
+    //task 3 before putting a new student into the array check if the email or name is blank
     registerStudent(studentToRegister) {
         if (!studentToRegister.name || !studentToRegister.email) { //if the name is false, we make it a true statement and run the if
             console.log('Invalid name or email')
@@ -26,36 +27,23 @@ class Bootcamp {
             }
         }
         this.students.push(studentToRegister)
-        console.log('Success!'+ studentToRegister.name+' is added to '+Bootcamp.name)
+        console.log('Success! ' + studentToRegister.name + ' is added to ' + Bootcamp.name)
         return true;//all arrays own the method push => we have to reference the array first then use .push
-    } 
+    }
     // task 4
-    listStudents( ){ //no parameter 
-    if ((this.students).length=0 ){
-console.log(`No students are registered to the  ${this.name} bootcamp.`)
-return false; //why do we need to return the boolean value here??
+    listStudents() { //no parameter 
+        if (this.students.length === 0) {
+            console.log(`No students are registered to the ${this.name} bootcamp.`)
+            return false;
         }
-    // research using the forEach() array method instead of the for...of loop (e.g. in testing)
-        connsole.log(`The students registered in ${this.name} are:`)
-               for (let x of this.students(email)){
-        x+=x+"\n";
-      console.log(this.name+this.email)
-       }
-        //how to make JS jump to new line? make a matrix that has 1 column and a bunch of rows?
-    return true;
- }
+        console.log(`The students registered in ${this.name} are:`)
 
-//bonus task
-getInfo(){
-console.log('this.name'+'this.level')
+        for (const student of this.students) {
+            console.log(`Name: ${student.name} Email: ${student.email}`)
+        }
+        return true; //helps us leave the function since we don't have else 
+    }
 }
-removestudent(email){
-this.student.splice(specific email 
-)
-}
-//bonus task
-// useful methods to add to Student class? getInfo() method that returns a string containing both the student's name and email?
-
 
 //testing
 
@@ -72,26 +60,16 @@ if (reactBootcamp.name === 'React' && reactBootcamp.level === 'Advanced'
 }
 
 const runTest = (bootcamp, student) => {
-    const attemptOne = bootcamp.registerStudent(student);
-    const attemptTwo = bootcamp.registerStudent(student);
-    const attemptThree = bootcamp.registerStudent(new Student("Babs Bunny"));
+    const attemptOne = bootcamp.registerStudent(student); //true
+    const attemptTwo = bootcamp.registerStudent(student); //false
+    const attemptThree = bootcamp.registerStudent(new Student("Babs Bunny")); //false
     if (attemptOne && !attemptTwo && !attemptThree) {
-        console.log("TASK 3: PASS");
-    }
-};
-
-runTest(reactBootcamp, testStudent);
-
-const runTest = (bootcamp, student) => {
-    const attemptOne = bootcamp.registerStudent(student);
-    const attemptTwo = bootcamp.registerStudent(student);
-    const attemptThree = bootcamp.registerStudent(new Student("Babs Bunny"));
-    if ( attemptOne && !attemptTwo && !attemptThree) {
         console.log("TASK 3: PASS");
     }
 
     bootcamp.registerStudent(new Student('Babs Bunny', 'babs@bunny.com'));
     if (bootcamp.listStudents()) {
+        // console.log("list of bootcamp students: ", bootcamp.listStudents())
         console.log("TASK 4: PASS 1/2");
     }
     bootcamp.students = [];
@@ -99,3 +77,5 @@ const runTest = (bootcamp, student) => {
         console.log("TASK 4: PASS 2/2");
     }
 };
+
+runTest(reactBootcamp, testStudent);
